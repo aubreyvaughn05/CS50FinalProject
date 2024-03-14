@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit Profile
+{% endblock %}
+
+{% block main %}
+    <form action="/edit_profile" method="post">
+        <section class="bg-light">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="row">
+                            <div class="col-lg-12 mb-4 mb-sm-5">
+                                <div class="card card-style1 border-0">
+                                    <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
+                                        <div class="row align-items-center">
+                                            <div class="col-lg-6 px-xl-10 text-center">
+                                                <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
+                                                    <h3><input name="name" placeholder="Name" type="text"></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul class="list-unstyled mb-1-9">
+                                            <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Position:</span><input name="position" placeholder="Teacher or Student" type="text"></li>
+                                            <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Experience:</span><input name="experience" placeholder="How many years have you danced?" type="text" style="width: 270px;"></li>
+                                        </ul>
+                                        <ul class="social-icon-style1 list-unstyled mb-0 ps-0">
+                                            <li><a href="#!"><i class="ti-twitter-alt"></i></a></li>
+                                            <li><a href="#!"><i class="ti-facebook"></i></a></li>
+                                            <li><a href="#!"><i class="ti-pinterest"></i></a></li>
+                                            <li><a href="#!"><i class="ti-instagram"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 mb-4 mb-sm-5">
+            <div>
+                <span class="section-title text-primary mb-3 mb-sm-4">About Me</span>
+                <p><input name="description" placeholder="What do you want fellow choreographers to know about you" type="text" style="width: 1000px; height: 100px"></p>
+                <p class="mb-0"></p>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-12 mb-4 mb-sm-5">
+                    <div class="mb-4 mb-sm-5">
+                        <span class="section-title text-primary mb-3 mb-sm-4">My Dance Styles</span>
+                        <p><input name="dance_styles" placeholder="What are your favorite dance styles?" type="text" style="width: 1000px; height: 100px"></p>
+                        <p class="mb-0"></p>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary" type="submit">Done</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    </section>
+    </form>
+{% endblock %}

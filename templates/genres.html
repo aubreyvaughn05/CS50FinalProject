@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <h1>What is your choreo preference? </h1>
+    <form action="/feed" method="post">
+        <div class="mb-3">
+            <label for="symbol">Choose a genre:</label>
+            <select name="genre">
+                <option value="jazz">jazz</option>
+                <option value="hip hop">hip hop</option>
+                <option value="ballet">ballet</option>
+                <option value="tap">tap</option>
+                <option value="lyrical">lyrical</option>
+                <option value="contemporary">contemporary</option>
+                <option value="other">other</option>
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Go</button>
+    </form>
+{% endblock %}

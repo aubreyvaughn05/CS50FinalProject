@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Feed
+{% endblock %}
+
+{% block main %}
+<!-- Bootstrap core CSS -->
+<!-- Bootstrap CSS from CDN -->
+
+
+    <main>
+
+        <section class="py-5 text-center container">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h1 class="fw-light">{{genre}} dances</h1>
+                </div>
+            </div>
+        </section>
+
+        <div class="album py-5 bg-light">
+            <div class="container">
+
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+                    {% for video in videos %}
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" src="{{ video["video_link"] }}" referrerpolicy="no-referrer-when-downgrade" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                    <div class="card-body">
+                                        <p class="card-text">{{ video["title"] }}</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <form action="/build" method="get"> <!-- Change the method to "post" -->
+                                                    <input type="hidden" name="video_link" value="{{ video["video_link"] }}">
+                                                    <input type="hidden" name="video_index" value="{{ loop.index }}"> <!-- Add a hidden input for the video index -->
+                                                    <button type="submit" class="btn btn-sm btn-outline-secondary">Add to Playlist</button>
+                                                </form>
+                                            </div>
+                                            <form action="/{{ video['username'] }}" method="post">
+                                                <small class="text-muted">
+                                                    <button type="submit" class="btn btn-sm btn-outline-secondary" name="username" value="{{ video['username'] }}">{{ video["username"] }}</button>
+                                                </small>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    </main>
+
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+{% endblock %}

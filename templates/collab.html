@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Collab
+{% endblock %}
+
+{% block main %}
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+    <link href="/static/collab.css" rel="stylesheet">
+
+    <div class="container">
+        <form action="/collab" method="post">
+
+            <label for="fname">Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+            <label for="receiver">Receiver</label>
+            <select name="receiver">
+                {% for name in names %}
+                    <option value="{{name}}">{{name}}</option>
+                {% endfor %}
+            </select>
+
+
+            <label for="subject">Subject</label>
+            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+            <input type="submit" value="Submit">
+
+        </form>
+    </div>
+{% endblock %}

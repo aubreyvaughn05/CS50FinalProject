@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Feed
+{% endblock %}
+
+{% block main %}
+<!-- Bootstrap core CSS -->
+
+    <main>
+
+        <section class="py-5 text-center container">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h1 class="fw-light">{{genre}} Playlist</h1>
+                </div>
+            </div>
+        </section>
+
+        <div class="album py-5 bg-light">
+            <div class="container">
+
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+                    {% for video in videos %}
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" src={{video['video_link']}} referrerpolicy="no-referrer-when-downgrade" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                    <div class="card-body">
+                                        <p class="card-text">{{video["username"]}}</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <form action="/profile_info" method="post">
+                                                <small class="text-muted"><button type="submit" class="btn btn-sm btn-outline-secondary" name="username" value="{{ video['username'] }}">{{video["username"]}}</button></small>
+                                            </form>
+                                            <form action="/remove" method="post"> <!-- Change the method to "post" -->
+                                                <input type="hidden" name="video_link" value="{{ video["video_link"] }}">
+                                                <input type="hidden" name="genre" value="{{ genre }}">
+                                                <button type="submit" class="btn btn-sm btn-outline-secondary">Remove from Playlist</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    </main>
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+{% endblock %}

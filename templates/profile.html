@@ -1,0 +1,111 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block main %}
+    <section class="bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 mb-4 mb-sm-5">
+                    <div class="card card-style1 border-0">
+                        <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
+                            <div class="row align-items-center text-center"> <!-- Center the content -->
+                                <div class="col-lg-12 px-xl-10">
+                                    <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
+                                        <h3 class="custom-text-color">{{ name }}</h3>
+                                    </div>
+                                <!-- Follow Button Form -->
+                                    <div class="col-lg-12 mb-4 mb-sm-5">
+                                    {% if not is_current_user %}
+                                        {% if is_following %}
+                                            <button type="button" class="btn btn-secondary">Following</button>
+                                        {% else %}
+                                            <form action="/follow" method="post">
+                                                <input type="hidden" name="name" value="{{ name }}">
+                                                <button type="submit" class="btn btn-primary">Follow</button>
+                                            </form>
+                                        {% endif %}
+                                    {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <ul class="list-unstyled mb-1-9">
+        <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Position:</span>{{ position }}</li>
+        <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Experience:</span>{{ experience }}</li>
+    </ul>
+
+    <ul class="social-icon-style1 list-unstyled mb-0 ps-0">
+        <li><a href="#!"><i class="ti-twitter-alt"></i></a></li>
+        <li><a href="#!"><i class="ti-facebook"></i></a></li>
+        <li><a href="#!"><i class="ti-pinterest"></i></a></li>
+        <li><a href="#!"><i class="ti-instagram"></i></a></li>
+    </ul>
+    </div>
+
+    <div class="col-lg-12 mb-4 mb-sm-5">
+        <div>
+            <span class="section-title text-primary mb-3 mb-sm-4">About Me</span>
+            <p>{{ description }}</p>
+            <p class="mb-0"></p>
+        </div>
+    </div>
+
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-12 mb-4 mb-sm-5">
+                <div class="mb-4 mb-sm-5">
+                    <span class="section-title text-primary mb-3 mb-sm-4">My Dance Styles</span>
+                    <p>{{dance_styles}}</p>
+                    <p class="mb-0"></p>
+                </div>
+                <div>
+                    <span class="section-title text-primary mb-3 mb-sm-4">My videos</span>
+
+                    <div class="album py-5 bg-light">
+                        <div class="container">
+
+                            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+                                {% for video in videos %}
+                                    <div class="col">
+                                        <div class="card shadow-sm">
+                                            <div class="embed-responsive embed-responsive-16by9">
+                                                <iframe class="embed-responsive-item" src="{{video["video_link"]}}" referrerpolicy="no-referrer-when-downgrade" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                                <div class="card-body">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div class="btn-group">
+                                                            <button type="button" class="btn btn-sm btn-outline-secondary">Add to Playlist</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+{% endblock %}

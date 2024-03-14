@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Share
+{% endblock %}
+
+{% block main %}
+    <h1>Share</h1>
+    <form action="/share" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="title" placeholder="Title of Dance" type="text">
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="link" placeholder="Youtube Link" type="text">
+        </div>
+        <div class="mb-3">
+            <label for="symbol">What genre?</label>
+            <select name="genre">
+                <option value="jazz">jazz</option>
+                <option value="hip hop">hip hop</option>
+                <option value="ballet">ballet</option>
+                <option value="tap">tap</option>
+                <option value="lyrical">lyrical</option>
+                <option value="contemporary">contemporary</option>
+                <option value="other">other</option>
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Upload</button>
+    </form>
+{% endblock %}
